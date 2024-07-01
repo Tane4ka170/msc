@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getFilteredSongs } from "../api/api";
+import { getFilteredSongs } from "../api";
 
 function Category() {
   const { digit, letter } = useParams();
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
-    let queryParam = digit || letter;
+    const queryParam = digit || letter;
 
     getFilteredSongs(queryParam)
       .then((sortedSongs) => {
