@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getFilteredSongs } from "../api";
+import { getFilteredSongs } from "../api/api";
 
 function Category() {
   const { digit, letter } = useParams();
