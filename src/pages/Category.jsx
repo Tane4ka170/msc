@@ -8,10 +8,12 @@ function Category() {
 
   useEffect(() => {
     const queryParam = digit || letter;
+    console.log("Query param:", queryParam);
 
     getFilteredSongs(queryParam)
       .then((sortedSongs) => {
         sortedSongs.sort((a, b) => a.artist.localeCompare(b.artist));
+        console.log("Sorted songs:", sortedSongs);
         setSongs(sortedSongs);
       })
       .catch((error) => {
@@ -23,11 +25,15 @@ function Category() {
     <div>
       <h1>Songs starting with {digit || letter}</h1>
       <ul>
-        {songs.map((song) => (
-          <li key={song._id}>
-            {song.artist} - {song.song}
-          </li>
-        ))}
+        {songs.length === 0 ? (
+          <li>No songs found</li>
+        ) : (
+          songs.map((song) => (
+            <li key={song._id}>
+              {song.artist} - {song.song}
+            </li>
+          ))
+        )}
       </ul>
     </div>
   );
