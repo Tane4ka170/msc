@@ -201,7 +201,7 @@ function Layout() {
                 <Button color="inherit">Latin Letters (A-Z)</Button>
                 <Menu
                   anchorEl={anchorEl}
-                  open={Boolean(anchorEl) && menuType === "latin")}
+                  open={Boolean(anchorEl) && menuType === "latin"}
                   onClose={handleMouseLeave}
                 >
                   {renderMenuItems(latinLetters, "latin")}
@@ -214,7 +214,7 @@ function Layout() {
                 <Button color="inherit">Cyrillic Letters (А-Я)</Button>
                 <Menu
                   anchorEl={anchorEl}
-                  open={Boolean(anchorEl) && menuType === "cyrillic")}
+                  open={Boolean(anchorEl) && menuType === "cyrillic"}
                   onClose={handleMouseLeave}
                 >
                   {renderMenuItems(cyrillicLetters, "cyrillic")}
