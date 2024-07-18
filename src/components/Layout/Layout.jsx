@@ -1,5 +1,45 @@
 import { Link, Outlet } from "react-router-dom";
 
+const numbers = Array.from({ length: 10 }, (_, i) => i.toString());
+const latinLetters = Array.from({ length: 26 }, (_, i) =>
+  String.fromCharCode(65 + i)
+); // A-Z
+const cyrillicLetters = [
+  "А",
+  "Б",
+  "В",
+  "Г",
+  "Д",
+  "Е",
+  "Ё",
+  "Ж",
+  "З",
+  "И",
+  "Й",
+  "К",
+  "Л",
+  "М",
+  "Н",
+  "О",
+  "П",
+  "Р",
+  "С",
+  "Т",
+  "У",
+  "Ф",
+  "Х",
+  "Ц",
+  "Ч",
+  "Ш",
+  "Щ",
+  "Ъ",
+  "Ы",
+  "Ь",
+  "Э",
+  "Ю",
+  "Я",
+];
+
 function Layout() {
   return (
     <div>
@@ -10,16 +50,34 @@ function Layout() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/songs/numbers">Numbers (0-9)</Link>
+              Numbers (0-9)
+              <ul>
+                {numbers.map((number) => (
+                  <li key={number}>
+                    <Link to={`/songs/numbers/${number}`}>{number}</Link>
+                  </li>
+                ))}
+              </ul>
             </li>
             <li>
-              <Link to="/songs/latin">Latin Letters (A-Z)</Link>
+              Latin Letters (A-Z)
+              <ul>
+                {latinLetters.map((letter) => (
+                  <li key={letter}>
+                    <Link to={`/songs/latin/${letter}`}>{letter}</Link>
+                  </li>
+                ))}
+              </ul>
             </li>
             <li>
-              <Link to="/songs/cyrillic">Cyrillic Letters (А-Я)</Link>
-            </li>
-            <li>
-              <Link to="/add-song">Add Song</Link>
+              Cyrillic Letters (А-Я)
+              <ul>
+                {cyrillicLetters.map((letter) => (
+                  <li key={letter}>
+                    <Link to={`/songs/cyrillic/${letter}`}>{letter}</Link>
+                  </li>
+                ))}
+              </ul>
             </li>
           </ul>
         </nav>
