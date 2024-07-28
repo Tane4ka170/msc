@@ -1,12 +1,10 @@
 import { Outlet } from "react-router-dom";
 import {
-  AppBar,
   Toolbar,
   Typography,
   Menu,
   MenuItem,
   Button,
-  IconButton,
   Drawer,
   List,
   ListItem,
@@ -17,6 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { styled } from "@mui/system";
+import { CustomAppBar, CustomButton, CustomIconButton } from "./Layout.styled";
 
 const numbers = Array.from({ length: 10 }, (_, i) => i.toString());
 const latinLetters = Array.from({ length: 26 }, (_, i) =>
@@ -137,21 +136,20 @@ function Layout() {
     <div
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
-      <AppBar position="static">
+      <CustomAppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Music Archive
           </Typography>
           {isMobile || isTablet ? (
             <>
-              <IconButton
+              <CustomIconButton
                 edge="start"
-                color="inherit"
                 aria-label="menu"
                 onClick={toggleDrawer}
               >
                 <MenuIcon />
-              </IconButton>
+              </CustomIconButton>
               <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
                 <List>
                   <ListItem
@@ -178,14 +176,14 @@ function Layout() {
             </>
           ) : (
             <>
-              <Button color="inherit" component={Link} to="/">
+              <CustomButton component={Link} to="/">
                 Home
-              </Button>
+              </CustomButton>
               <div
                 onMouseEnter={(event) => handleMouseEnter(event, "numbers")}
                 onMouseLeave={handleMouseLeave}
               >
-                <Button color="inherit">Numbers (0-9)</Button>
+                <CustomButton>Numbers (0-9)</CustomButton>
                 <Menu
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl) && menuType === "numbers"}
@@ -198,7 +196,7 @@ function Layout() {
                 onMouseEnter={(event) => handleMouseEnter(event, "latin")}
                 onMouseLeave={handleMouseLeave}
               >
-                <Button color="inherit">Latin Letters (A-Z)</Button>
+                <CustomButton>Latin Letters (A-Z)</CustomButton>
                 <Menu
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl) && menuType === "latin"}
@@ -211,7 +209,7 @@ function Layout() {
                 onMouseEnter={(event) => handleMouseEnter(event, "cyrillic")}
                 onMouseLeave={handleMouseLeave}
               >
-                <Button color="inherit">Cyrillic Letters (А-Я)</Button>
+                <CustomButton>Cyrillic Letters (А-Я)</CustomButton>
                 <Menu
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl) && menuType === "cyrillic"}
@@ -223,7 +221,7 @@ function Layout() {
             </>
           )}
         </Toolbar>
-      </AppBar>
+      </CustomAppBar>
       <Main>
         <Outlet />
       </Main>
