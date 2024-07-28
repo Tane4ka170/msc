@@ -1,14 +1,9 @@
-@import 'node_modules/modern-normalize/modern-normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300..700&display=swap');
+@import "node_modules/modern-normalize/modern-normalize.css";
+@import url("https://fonts.googleapis.com/css2?family=Akshar:wght@300..700&display=swap");
 
 body {
   margin: 0;
-  font-family: 'Akshar', sans-serif;
+  font-family: "Akshar", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

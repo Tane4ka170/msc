@@ -1,10 +1,10 @@
+// Layout.js
 import { Outlet } from "react-router-dom";
 import {
   Toolbar,
   Typography,
   Menu,
   MenuItem,
-  Button,
   Drawer,
   List,
   ListItem,
@@ -14,13 +14,18 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { styled } from "@mui/system";
-import { CustomAppBar, CustomButton, CustomIconButton } from "./Layout.styled";
+import {
+  CustomAppBar,
+  CustomButton,
+  CustomIconButton,
+  Footer,
+  Main,
+} from "./Layout.styled";
 
 const numbers = Array.from({ length: 10 }, (_, i) => i.toString());
 const latinLetters = Array.from({ length: 26 }, (_, i) =>
   String.fromCharCode(65 + i)
-); // A-Z
+);
 const cyrillicLetters = [
   "А",
   "Б",
@@ -57,24 +62,6 @@ const cyrillicLetters = [
   "Я",
 ];
 
-const Main = styled("main")(({ theme }) => ({
-  flex: 1,
-  padding: theme.spacing(2),
-  [theme.breakpoints.down("sm")]: {
-    padding: theme.spacing(1),
-  },
-}));
-
-const Footer = styled("footer")(({ theme }) => ({
-  backgroundColor: "#422065",
-  color: "white",
-  textAlign: "center",
-  padding: theme.spacing(2),
-  [theme.breakpoints.down("sm")]: {
-    padding: theme.spacing(1),
-  },
-}));
-
 function Layout() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [menuType, setMenuType] = useState(null);
@@ -83,9 +70,10 @@ function Layout() {
   const isTablet = useMediaQuery((theme) =>
     theme.breakpoints.between("sm", "md")
   );
+  const isDesktop = useMediaQuery((theme) => theme.breakpoints.up("md"));
 
   const handleMouseEnter = (event, type) => {
-    if (!isMobile && !isTablet) {
+    if (isDesktop) {
       setAnchorEl(event.currentTarget);
       setMenuType(type);
     }
