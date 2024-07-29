@@ -48,12 +48,31 @@ export const Title = styled(Typography)`
   margin-bottom: 20px;
 `;
 
-export const StyledList = styled.ul`
+export const CardList = styled.ul`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
   list-style-type: none;
-  padding: 0;
-  margin: 0;
 `;
 
-export const StyledListItem = styled.li`
-  margin: 10px 0;
+export const Card = styled.li`
+  width: 200px;
+  background-color: #e0f7fa;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+export const CardTitle = styled.h3`
+  font-size: 1.2rem;
+  color: #333333;
+  margin-bottom: 10px;
 `;
