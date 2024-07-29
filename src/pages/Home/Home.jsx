@@ -1,10 +1,11 @@
 import {
+  Card,
+  CardList,
+  CardTitle,
   Section,
   StyledButton,
   StyledContainer,
   StyledLink,
-  StyledList,
-  StyledListItem,
   Title,
 } from "./Home.styled";
 import { Typography } from "@mui/material";
@@ -30,21 +31,20 @@ function Home() {
         <Typography variant="h4" gutterBottom>
           Explore by Categories
         </Typography>
-        <StyledList>
-          <StyledListItem>
-            <StyledLink to="/songs/numbers">Songs by Numbers (0-9)</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to="/songs/latin">
-              Songs by Latin Letters (A-Z)
-            </StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to="/songs/cyrillic">
-              Songs by Cyrillic Letters (А-Я)
-            </StyledLink>
-          </StyledListItem>
-        </StyledList>
+        <CardList>
+          <Card>
+            <CardTitle>Numbers (0-9)</CardTitle>
+            <StyledLink to="/songs/numbers">Explore Songs</StyledLink>
+          </Card>
+          <Card>
+            <CardTitle>Latin Letters (A-Z)</CardTitle>
+            <StyledLink to="/songs/latin">Explore Songs</StyledLink>
+          </Card>
+          <Card>
+            <CardTitle>Cyrillic Letters (А-Я)</CardTitle>
+            <StyledLink to="/songs/cyrillic">Explore Songs</StyledLink>
+          </Card>
+        </CardList>
       </Section>
       <Section>
         <Typography variant="h4" gutterBottom>
