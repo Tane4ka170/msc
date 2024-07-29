@@ -1,16 +1,16 @@
-// Layout.styled.js
 import { AppBar, Button, IconButton } from "@mui/material";
 import styled from "styled-components";
 
 const sharedStyles = {
-  backgroundColor: "#333 !important", // Уніфікований колір фону
-  color: "white !important", // Уніфікований колір тексту
+  backgroundColor: "#9ce3f9 !important",
+  color: "#003366 !important",
 };
 
 export const Main = styled("main")(({ theme }) => ({
   flex: 1,
   padding: theme.spacing(2),
   backgroundColor: "#f5f5f5",
+  color: "#333333",
   [theme.breakpoints.down("sm")]: {
     padding: theme.spacing(1),
   },
@@ -20,6 +20,7 @@ export const Footer = styled("footer")(({ theme }) => ({
   ...sharedStyles,
   textAlign: "center",
   padding: theme.spacing(2),
+  color: "#FFFFFF",
   [theme.breakpoints.down("sm")]: {
     padding: theme.spacing(1),
   },
@@ -31,14 +32,14 @@ export const CustomAppBar = styled(AppBar)({
 });
 
 export const CustomButton = styled(Button)({
-  color: "white !important",
+  color: "#FFFFFF !important",
   textTransform: "none !important",
   backgroundColor: "transparent !important",
   "&:hover": {
-    backgroundColor: "rgba(255, 255, 255, 0.1) !important",
+    backgroundColor: "#A0D7A4 !important",
   },
 });
 
 export const CustomIconButton = styled(IconButton)({
-  color: "white !important",
+  color: "#FFFFFF !important",
 });
