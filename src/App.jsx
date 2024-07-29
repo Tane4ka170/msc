@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-import AllArchive from "./pages/AllArchive";
 import Category from "./pages/Category";
 import NumbersCategory from "./pages/NumbersCategory";
 import LatinCategory from "./pages/LatinCategory";
 import CyrillicCategory from "./pages/CyrillicCategory";
 import Home from "./pages/Home/Home";
+import AllArchive from "./pages/AllArchive/AllArchive";
 
 function App() {
   return (
