@@ -1,31 +1,43 @@
 import { useEffect, useState } from "react";
-import { getAllSongs, getFilteredSongs } from "../../api/api";
+import { getAllSongs } from "../../api/api";
 import { SearchInput, SongItem, SongList } from "./AllArchive.styled";
+import Loader from "../../components/Loader/Loader";
 
 const AllArchive = () => {
   const [songs, setSongs] = useState([]);
+  const [filteredSongs, setFilteredSongs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSongs = async () => {
+      setLoading(true);
       try {
         const allSongs = await getAllSongs();
         setSongs(allSongs);
+        setFilteredSongs(allSongs);
       } catch (error) {
         console.error("Error fetching songs:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchSongs();
   }, []);
 
-  const handleSearch = async (e) => {
-    setSearchTerm(e.target.value);
-    if (e.target.value === "") {
-      const allSongs = await getAllSongs();
-      setSongs(allSongs);
+  const handleSearch = (e) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+
+    if (term === "") {
+      setFilteredSongs(songs);
     } else {
-      const filteredSongs = await getFilteredSongs(e.target.value);
-      setSongs(filteredSongs);
+      const filtered = songs.filter(
+        (song) =>
+          (song.artist && song.artist.toLowerCase().includes(term)) ||
+          (song.song && song.song.toLowerCase().includes(term))
+      );
+      setFilteredSongs(filtered);
     }
   };
 
@@ -38,13 +50,17 @@ const AllArchive = () => {
         value={searchTerm}
         onChange={handleSearch}
       />
-      <SongList>
-        {songs.map((song) => (
-          <SongItem key={song.id}>
-            {song.title} - {song.artist}
-          </SongItem>
-        ))}
-      </SongList>
+      {loading ? (
+        <Loader />
+      ) : (
+        <SongList>
+          {filteredSongs.map((song) => (
+            <SongItem key={song.id}>
+              {song.artist} - {song.song}
+            </SongItem>
+          ))}
+        </SongList>
+      )}
     </div>
   );
 };

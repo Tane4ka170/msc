@@ -21,3 +21,13 @@ export const getFilteredSongs = async (start) => {
     throw error;
   }
 };
+
+export const searchSongs = async (query) => {
+  try {
+    const response = await axios.get(`/search?query=${query}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error searching songs:", error);
+    throw error;
+  }
+};
