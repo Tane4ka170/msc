@@ -1,4 +1,10 @@
-import { Link } from "react-router-dom";
+import {
+  Container,
+  Heading,
+  List,
+  ListItem,
+  StyledLink,
+} from "./Letters.styled";
 
 const cyrillicLetters = [
   "А",
@@ -11,6 +17,7 @@ const cyrillicLetters = [
   "Ж",
   "З",
   "И",
+  "І", // Українська літера "І"
   "Й",
   "К",
   "Л",
@@ -38,16 +45,16 @@ const cyrillicLetters = [
 
 function CyrillicCategory() {
   return (
-    <div>
-      <h1>Cyrillic Letters (А-Я)</h1>
-      <ul>
+    <Container>
+      <Heading>Cyrillic Letters (А-Я)</Heading>
+      <List>
         {cyrillicLetters.map((letter) => (
-          <li key={letter}>
-            <Link to={`/songs/cyrillic/${letter}`}>{letter}</Link>
-          </li>
+          <ListItem key={letter}>
+            <StyledLink to={`/songs/cyrillic/${letter}`}>{letter}</StyledLink>
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Container>
   );
 }
 
