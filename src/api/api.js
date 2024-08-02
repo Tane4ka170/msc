@@ -31,3 +31,11 @@ export const searchSongs = async (query) => {
     throw error;
   }
 };
+
+export const warmUpServer = async () => {
+  try {
+    await axios.get("/warmup");
+  } catch (error) {
+    console.error("Error warming up the server:", error);
+  }
+};
